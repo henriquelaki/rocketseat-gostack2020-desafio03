@@ -9,11 +9,9 @@ function App() {
   const [repositories, setRepositories] = useState([]);
 
   useEffect(() => {
-    let isMounted = true;
     api.get('repositories').then(response => {
-        if(isMounted) setRepositories(response.data);
+       setRepositories(response.data);
     })
-    return () => { isMounted = false };
   }, [repositories])
 
   async function handleAddRepository() {
